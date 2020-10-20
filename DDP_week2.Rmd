@@ -1,0 +1,29 @@
+---
+title: "Leaflet Map pointing to MIT"
+author: "by Venkat"
+date: "12th October 2020"
+output: html_document
+---
+
+## My First Leaflet Map
+Create a leaflet map.
+```{r cars}
+library(leaflet)
+locationMap <- leaflet() %>% addTiles()
+```
+
+Create a marker with a picture of MIT and a link to its homepage.
+```{r}
+MITcampusIcon <- makeIcon(
+   iconUrl = "https://www.karnataka.com/wp-content/uploads/2014/07/manipal-institute-of-technology.jpg",
+   iconWidth = 30*408/255, iconHeight = 30,
+   iconAnchorX = 30*408/255/2, iconAnchorY = 30/2
+)
+```
+Add the marker to the map and display the map.
+```{r}
+MITPopup <- c("<a href= 'https://manipal.edu/mit.html' >Manipal Institute of Tech<br><img src='https://www.karnataka.com/wp-content/uploads/2014/07/manipal-institute-of-technology.jpg' width='210' height='132'  alt='Manipal Institute of Technology' title='Yumit'></a>")
+locationMap %>%
+   addTiles() %>%
+   addMarkers(lat=13.3513, lng=74.7927, popup = MITPopup)
+```
